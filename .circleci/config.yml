@@ -1,4 +1,3 @@
-####Checking-old-scanner--#########
 version: '2.1'
 orbs:
   sysdig: sysdig/sysdig@2.0.0
@@ -19,4 +18,4 @@ jobs:
           image-tag: '${IMAGE_TO_BUILD}'
           input-type: docker-daemon
           sysdig-secure-token: SECURE_API_TOKEN
-workflows: null
+# workflows: null
