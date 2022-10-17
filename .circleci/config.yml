@@ -14,7 +14,11 @@ jobs:
           image-tag: '${IMAGE_TO_PULL_AND_SCAN}'
           input-type: pull
           sysdig-secure-token: SECURE_API_TOKEN
+<<<<<<< HEAD
 workflows:
   scan:
     jobs:
       - scan-image-from-registry 
+=======
+
+>>>>>>> refs/remotes/origin/main
