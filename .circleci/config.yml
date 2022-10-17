@@ -2,20 +2,16 @@ version: '2.1'
 orbs:
   sysdig: sysdig/sysdig@2.0.0
 jobs:
-  build-and-scan:
+  scan-image-from-registry:
     docker:
       - image: 'cimg/base:stable'
     environment:
-      IMAGE_TO_BUILD: 'nginx:latest'
+      IMAGE_TO_PULL_AND_SCAN: 'nginx:latest'
     steps:
-      - checkout
       - setup_remote_docker:
           version: 19.03.13
-      - run:
-          command: 'docker build -t ${IMAGE_TO_BUILD} .'
-          name: Build Docker image
       - sysdig/inline-image-scan:
-          image-tag: '${IMAGE_TO_BUILD}'
-          input-type: docker-daemon
+          image-tag: '${IMAGE_TO_PULL_AND_SCAN}'
+          input-type: pull
           sysdig-secure-token: SECURE_API_TOKEN
-# workflows: null
+workflows: null
