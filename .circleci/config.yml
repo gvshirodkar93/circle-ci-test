@@ -28,13 +28,13 @@ jobs:
             docker build -t node-app:${TAG} .
             docker images | grep -i node-app        
       - run: 
-          name: "Download Sysdig CLI scanner and Scan Image" 
+          name: "Download Sysdig CLI scanner " 
           command: |
             echo 'Downloading most recent Sysdig CLI scanner'
             curl -LO "https://download.sysdig.com/scanning/bin/sysdig-cli-scanner/$(curl -L -s https://download.sysdig.com/scanning/sysdig-cli-scanner/latest_version.txt)/linux/amd64/sysdig-cli-scanner"
             chmod +x ./sysdig-cli-scanner
-            ./sysdig-cli-scanner --console-log --apiurl $SYSDIG_URL docker://node-app:$
+            
           
-      # - run:
-      #     name: "Scan image with Sysdig CLI scanner"
-      #     command: ./sysdig-cli-scanner --console-log --apiurl $SYSDIG_SECURE_API docker://node-app:${TAG}
+      - run:
+          name: "Scan image with Sysdig CLI scanner"
+          command: ./sysdig-cli-scanner --console-log --apiurl $SYSDIG_URL docker://node-app:${TAG}
