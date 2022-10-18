@@ -26,6 +26,7 @@ jobs:
           name: "Build docker image"
           command: |
             docker build -t node-hello-world:${TAG} .
+            docker images | grep -i node-hello-world        
       - run: 
           name: "Download Sysdig CLI scanner" 
           command: |
@@ -35,4 +36,4 @@ jobs:
           
       - run:
           name: "Scan image with Sysdig CLI scanner"
-          command: ./sysdig-cli-scanner --console-log --apiurl $SYSDIG_SECURE_API node-hello-world:${TAG}
+          command: SECURE_API_TOKEN ./sysdig-cli-scanner --console-log --apiurl $SYSDIG_SECURE_API node-hello-world:${TAG}
