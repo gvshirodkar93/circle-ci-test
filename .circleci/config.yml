@@ -9,7 +9,7 @@ jobs:
     environment:
       TAG:
       
-    working_directory: /mnt/ramdisk
+    # working_directory: /mnt/ramdisk
 
     steps:
       - checkout
