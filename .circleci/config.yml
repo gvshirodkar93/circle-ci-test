@@ -25,7 +25,7 @@ jobs:
       - run:
           name: "Build docker image"
           command: |
-            docker build . --file Dockerfile node-hello-world:${TAG} .
+            docker build . -f circle-ci-test/Dockerfile  node-hello-world:${TAG} .
       - run: 
           name: "Download Sysdig CLI scanner" 
           command: |
